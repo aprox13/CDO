@@ -100,7 +100,6 @@ def users_editor(request):
 
 
 def about(request):
-    print(request.GET)
     if request.method == 'GET' and 'id' in request.GET:
         try:
             org = Organisation.objects.get(org_id=request.GET['id'])
@@ -132,5 +131,40 @@ def about(request):
             return render(request, 'about.html', {
                 'PAGE_TITLE': '404 not found'
             })
+
+    if request.method == 'POST' and 'edit_token' in request.POST and request.POST['edit_token'] == '1':
+        id = int(request.POST['edit_id_token'])
+        print('edit by id ' + str(id))
+        form = OrgForm(request.POST)
+        if form.is_valid():
+            try:
+                org = Organisation.objects.get(org_id=id)
+                org.org_name = form.cleaned_data['org_name']
+                org.org_dir_birth = form.cleaned_data['org_dir_birth']
+                org.org_dir_surname = form.cleaned_data['org_dir_surname']
+                org.org_location = form.cleaned_data['org_location']
+                org.org_date = form.cleaned_data['org_date']
+                org.org_about = form.cleaned_data['org_about']
+                org.org_dir_name = form.cleaned_data['org_dir_name']
+                org.save()
+
+                form1 = OrgForm(initial={
+                    'org_name': org.org_name,
+                    'org_about': org.org_about,
+                    'org_date': org.org_date,
+                    'org_location': org.org_location,
+                    'org_dir_name': org.org_dir_name,
+                    'org_dir_surname': org.org_dir_surname,
+                    'org_dir_birth': org.org_dir_birth,
+                })
+                form1.set_read_only()
+                edit = False
+
+                form1.set_to_all_style('margin-left: 40px;')
+
+                return redirect('/about?id=' + str(id))
+
+            except ObjectDoesNotExist:
+                print('wtf')
 
     return redirect('root')
