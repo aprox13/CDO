@@ -70,7 +70,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'CDO.wsgi.application'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
-SESSION_COOKIE_AGE = 3600 * 24
+SESSION_COOKIE_AGE = 3600*24
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

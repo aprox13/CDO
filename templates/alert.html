@@ -1,0 +1,8 @@
+{% if ALERT_TAG != None %}
+    <div class="alert {{ ALERT_TAG.type }} alert-dismissible fade show" role="alert" style="border-radius: 0">
+        <strong>{{ ALERT_TAG.title }}</strong> {{ ALERT_TAG.message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}

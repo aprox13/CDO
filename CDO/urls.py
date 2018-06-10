@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^$', views.empty, name='root'),
     url(r'^main[/]?$', views.main_page, name='main_page'),
     url(r'^users[/]?$', views.users_editor, name='users_e'),
-    url(r'^about[/]?$', views.about, name='users_e')
+    url(r'^about[/]?$', views.about, name='users_e'),
+    url(r'add[/]?$', views.add, name='add_org')
 ]

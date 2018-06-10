@@ -10,6 +10,12 @@ PERM_GUEST = 2
 PERMISSIONS = (
     (PERM_ADMIN, "Администратор"),
     (PERM_MANAGER, "Менеджер"),
-    (PERM_MANAGER, "Гость")
+    (PERM_GUEST, "Гость")
 )
-# HTML TITLES
+TOKEN_DELETE = 0
+TOKEN_SAVE = 1
+EDIT_TOKEN = 'edit_token'
+ALERT_TOKEN = 'alert_token'
+ALERT_TITLE = 'alert_title'
+ALERT_TYPE = 'alert_type'
+ALERT_MESSAGE = 'alert_message'
