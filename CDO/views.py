@@ -119,7 +119,7 @@ def users_editor(request):
 def about(request):
     print('about page')
     perm = get(request, USER_PERMISSION)
-    if request.method == 'POST' and EDIT_TOKEN in request.POST and perm != PERM_GUEST: # Post to edit
+    if request.method == 'POST' and EDIT_TOKEN in request.POST and perm != PERM_GUEST:  # Post to edit
         print('POST: ' + str(request.POST))
         id = int(request.POST['edit_id_token'])
         form = OrgForm(request.POST)
@@ -149,7 +149,7 @@ def about(request):
                 except ObjectDoesNotExist:
                     print('wtf. wrong post id')
         elif token == TOKEN_DELETE:  # Delete request
-            
+
             print('token remove')
             org = Organisation.objects.get(org_id=id)
             put_alert_to_session(request, Alert.TYPE_DANGER, 'Успешно',
